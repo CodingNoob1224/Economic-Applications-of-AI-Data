@@ -70,3 +70,42 @@ print(str1 + " " + str2 + "\n" + str(3))
 print(str1[0])
 # str1[0]='H'
 print(str1)
+
+
+str = "Aloha"
+print(len(str))
+print(str.upper())
+print(str)
+print(str.lower())
+str=str.upper()
+print(str)
+
+strlow='lower'
+strup='UPPER'
+print(strlow.islower())
+print(strup.islower())
+print(strlow.isupper())
+print(strup.isupper())
+
+name="patty"
+print(name.index("a"))
+
+#replace 
+name = "patty kuo"
+print(name.replace("p","P"))
+print(name.replace("patty","sharon"))
+
+#split and list
+sentence = "today is  a good day"
+print(sentence.split(" "))  
+print(list(sentence))
+
+#format
+print("I have a string {}".format("here it is"))
+print("I have a string {} {} {}".format(1,"2",3))
+print("{name},{address},{age}".format(name="patty", address="taiwan", age=18))
+
+#fstring
+name = "patty"
+age = 18
+print(f"hello i am {name}, I am {age} year old")
