@@ -65,4 +65,4 @@ print(results.summary())
 # results = model.fit()
 # beta = results.params
 # lwage_hat = results .fittedvalues
-# r2 = results.rsquared
+# r2 = results.rsquared 
