@@ -64,27 +64,29 @@ print(results.summary())
 beta_train =results.params
 u_hat_test = lbs_test - beta_train[0] - beta_train[1]*cigs_test
 MSE =np.mean (u_hat_test**2)
+print("MSE: ",MSE)
 
-llbs = np.log(cigs_lbs["lbs"])
-cigs_lbs = cigs_lbs.assign(llbs=llbs)
-model = smf.ols(formula="llbs~cigs",data=cigs_lbs)
-results =model.fit()
-beta =results.params
-llbs_hat=results .fittedvalues
-r2 = results.rsquared
+# llbs = np.log(cigs_lbs["lbs"])
+# cigs_lbs = cigs_lbs.assign(llbs=llbs)
+# model = smf.ols(formula="llbs~cigs",data=cigs_lbs)
+# results =model.fit()
+# beta =results.params
+# llbs_hat=results .fittedvalues
+# r2 = results.rsquared
 
-llbs=np.log(cigs_lbs["lbs"])
-cigs_lbs =cigs_lbs.assign(llbs=llbs)
-cigs_train,cigs_test,llbs_train,llbs_test=train_test_split (cigs,llbs,test_size  =.4,random_state=9 )
-X_train = sm.add_constant (cigs_train )
-model = sm.OLS (lbs_train , X_train)
-results2 =model.fit ()
-print(results2.summary ())
-llbs_hat_test=  beta_train [0] + beta_train[1]*cigs_test
-lbs_hat_test = np.exp(llbs_hat_test )
-lbs_test = np.exp(llbs_test)
-u2_hat_test = lbs_test - lbs_hat_test
-MSE2 =np.mean (u2_hat_test**2)
+# llbs=np.log(cigs_lbs["lbs"])
+# cigs_lbs =cigs_lbs.assign(llbs=llbs)
+# cigs_train,cigs_test,llbs_train,llbs_test=train_test_split (cigs,llbs,test_size  =.4,random_state=9 )
+# X_train = sm.add_constant (cigs_train )
+# model = sm.OLS (lbs_train , X_train)
+# results2 =model.fit ()
+# print(results2.summary ())
+# llbs_hat_test=  beta_train [0] + beta_train[1]*cigs_test
+# lbs_hat_test = np.exp(llbs_hat_test )
+# lbs_test = np.exp(llbs_test)
+# u2_hat_test = lbs_test - lbs_hat_test
+# MSE2 =np.mean (u2_hat_test**2)
+# print("MSE: ",MSE) #MSE:  1.555206690257327
 
 cigssq =np.square(cigs_lbs["cigs"])
 cigs_lbs =cigs_lbs.assign(cigssq=cigssq)
@@ -93,9 +95,8 @@ results =model.fit()
 beta =results.params
 lbs_hat=results.fittedvalues
 r2 = results.rsquared
-
-cigssq =np.square(cigs_lbs["cigs"])
-cigs_lbs =cigs_lbs.assign(cigssq=cigssq)
+# cigssq =np.square(cigs_lbs["cigs"])
+# cigs_lbs =cigs_lbs.assign(cigssq=cigssq)
 cigs_train ,cigs_test ,cigssq_train ,cigssq_test ,lbs_train ,lbs_test=train_test_split (cigs,cigssq,lbs,test_size =0.4)
 X_train = pd.concat([cigs_train ,cigssq_train],axis=1)
 X_train = sm.add_constant(X_train)
@@ -105,3 +106,7 @@ print(results.summary())
 beta_train = results.params
 u_hat_test = lbs_test - beta_train[0] - beta_train[1]*cigs_test -beta_train[2]*cigssq_test
 MSE =np.mean (u_hat_test**2)
+print("MSE: ",MSE) #MSE:  1.4522356025380312
+
+#conclusion
+#bwghtlbs=β0+cigsβ1+cigs2β2+u 這個model is better
