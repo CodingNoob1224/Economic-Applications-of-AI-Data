@@ -27,7 +27,7 @@ b0=mean_lbs - b1*mean_cigs
 lbs_hat=b0+b1*lbs
 u_hat =lbs-lbs_hat
 '''
-
+#task one
 cigs_lbs = bwght_data[["cigs","bwghtlbs"]].copy()
 cigs_lbs.columns = ["cigs", "lbs"]
 model = smf.ols(formula="cigs ~ lbs", data=cigs_lbs)
